@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Spectra Institute for International Relations & Data Intelligence — Clarity in a complex world.">
+<meta property="og:title" content="Spectra — Institute for International Relations & Data Intelligence">
+<meta property="og:description" content="Clarity in a complex world. Data-driven policy research on geopolitics, trade, and development.">
+<title>Spectra — Institute for International Relations & Data Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0f1f3d;
+  --navy2: #162845;
+  --navy3: #1e3358;
+  --gold: #c9973a;
+  --gold2: #e0b05a;
+  --gold3: #f5cc7a;
+  --cream: #f8f5ef;
+  --cream2: #f0ebe0;
+  --cream3: #e8e0d0;
+  --ink: #1a1610;
+  --ink2: #3a3228;
+  --ink3: #6a5f50;
+  --ink4: #9a8f80;
+  --rule: #ddd5c5;
+  --white: #ffffff;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* CUSTOM SCROLLBAR */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--cream2); }
+::-webkit-scrollbar-thumb { background: var(--gold); }
+
+/* ===================== NAV ===================== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 60px;
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  background: rgba(15, 31, 61, 0.97);
+  backdrop-filter: blur(12px);
+  padding: 14px 60px;
+  border-bottom: 1px solid rgba(201, 151, 58, 0.2);
+}
+.nav-logo {
+  font-family: 'Cormorant', serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.06em;
+  text-decoration: none;
+}
+.nav-logo span {
+  color: var(--gold2);
+}
+.nav-links {
+  display: flex; gap: 36px; list-style: none;
+}
+.nav-links a {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px; font-weight: 400;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold2); }
+.nav-cta {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold2);
+  border: 1px solid rgba(201,151,58,0.4);
+  padding: 8px 20px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.nav-cta:hover {
+  background: var(--gold);
+  color: var(--navy);
+  border-color: var(--gold);
+}
+
+/* ===================== HERO ===================== */
+.hero {
+  min-height: 100vh;
+  background: var(--navy);
+  position: relative;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 60px 80px;
+  overflow: hidden;
+}
+
+/* Geometric background */
+.hero-geo {
+  position: absolute; inset: 0;
+  overflow: hidden;
+}
+.hero-geo::before {
+  content: '';
+  position: absolute;
+  top: -20%; right: -10%;
+  width: 70vw; height: 70vw;
+  border: 1px solid rgba(201,151,58,0.08);
+  border-radius: 50%;
+}
+.hero-geo::after {
+  content: '';
+  position: absolute;
+  top: 10%; right: 5%;
+  width: 45vw; height: 45vw;
+  border: 1px solid rgba(201,151,58,0.05);
+  border-radius: 50%;
+}
+.hero-grid-lines {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(201,151,58,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,151,58,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+.hero-gradient {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 50% 60% at 75% 40%, rgba(201,151,58,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 20% 60%, rgba(30,51,88,0.8) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(15,31,61,0.3) 0%, rgba(15,31,61,0.95) 100%);
+}
+
+/* Prism mark - large background element */
+.hero-prism {
+  position: absolute;
+  top: 50%; right: 8%;
+  transform: translateY(-50%);
+  width: 320px; height: 320px;
+  opacity: 0.06;
+}
+.hero-prism svg { width: 100%; height: 100%; }
+
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 820px;
+}
+.hero-eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px; font-weight: 400;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+  display: flex; align-items: center; gap: 16px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+.hero-eyebrow::before {
+  content: ''; width: 40px; height: 1px;
+  background: var(--gold);
+}
+.hero-title {
+  font-family: 'Cormorant', serif;
+  font-size: clamp(52px, 8vw, 96px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.35s both;
+}
+.hero-title strong {
+  font-weight: 700;
+  display: block;
+}
+.hero-title em {
+  color: var(--gold2);
+  font-style: italic;
+  font-weight: 300;
+}
+.hero-subtitle {
+  font-family: 'Jost', sans-serif;
+  font-size: 13px; font-weight: 300;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.5s both;
+}
+.hero-mission {
+  font-family: 'Cormorant', serif;
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 300; font-style: italic;
+  color: rgba(255,255,255,0.7);
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 52px;
+  padding-left: 24px;
+  border-left: 2px solid var(--gold);
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.65s both;
+}
+.hero-actions {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.8s both;
+}
+.btn-primary {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  background: var(--gold);
+  color: var(--navy);
+  padding: 14px 32px;
+  text-decoration: none;
+  transition: all 0.25s;
+  border: 1px solid var(--gold);
+}
+.btn-primary:hover {
+  background: var(--gold2);
+  border-color: var(--gold2);
+  transform: translateY(-1px);
+}
+.btn-secondary {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px; font-weight: 400;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  padding: 14px 32px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.25s;
+}
+.btn-secondary:hover {
+  border-color: rgba(255,255,255,0.5);
+  color: var(--white);
+}
+
+/* Scroll indicator */
+.hero-scroll {
+  position: absolute; bottom: 36px; right: 60px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: 0;
+  animation: fadeIn 1s ease 1.2s both;
+}
+.hero-scroll span {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  writing-mode: vertical-rl;
+}
+.hero-scroll-line {
+  width: 1px; height: 60px;
+  background: linear-gradient(180deg, rgba(201,151,58,0.6), transparent);
+  animation: scrollLine 2s ease infinite;
+}
+
+/* Stats bar */
+.hero-stats {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: rgba(255,255,255,0.04);
+  border-top: 1px solid rgba(201,151,58,0.15);
+  display: flex;
+  opacity: 0;
+  animation: fadeIn 0.8s ease 1s both;
+}
+.hero-stat {
+  flex: 1; padding: 20px 40px;
+  border-right: 1px solid rgba(201,151,58,0.1);
+  display: flex; align-items: center; gap: 16px;
+}
+.hero-stat:last-child { border-right: none; }
+.hs-num {
+  font-family: 'Cormorant', serif;
+  font-size: 32px; font-weight: 700;
+  color: var(--gold2); line-height: 1;
+}
+.hs-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px; font-weight: 300;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.4;
+}
+
+/* ===================== ABOUT ===================== */
+.about {
+  padding: 120px 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  background: var(--cream);
+  position: relative;
+}
+.about::before {
+  content: 'SPECTRA';
+  position: absolute;
+  font-family: 'Cormorant', serif;
+  font-size: 200px; font-weight: 700;
+  color: rgba(15,31,61,0.03);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 0.1em;
+}
+.about-left {}
+.section-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-label::before {
+  content: ''; width: 30px; height: 1px; background: var(--gold);
+}
+.section-title {
+  font-family: 'Cormorant', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 600; color: var(--navy);
+  line-height: 1.1; margin-bottom: 28px;
+}
+.section-title em { color: var(--gold); font-style: italic; }
+.about-text {
+  font-size: 15px; font-weight: 300;
+  color: var(--ink3); line-height: 1.9;
+  margin-bottom: 20px;
+}
+.about-right {}
+.about-values {
+  display: flex; flex-direction: column; gap: 0;
+}
+.value-item {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--rule);
+  display: flex; gap: 20px; align-items: flex-start;
+}
+.value-item:first-child { border-top: 1px solid var(--rule); }
+.value-num {
+  font-family: 'Cormorant', serif;
+  font-size: 13px; font-weight: 600;
+  color: var(--gold); flex-shrink: 0;
+  padding-top: 2px; font-style: italic;
+}
+.value-content h4 {
+  font-family: 'Jost', sans-serif;
+  font-size: 14px; font-weight: 500;
+  color: var(--navy); margin-bottom: 4px;
+  letter-spacing: 0.05em;
+}
+.value-content p {
+  font-size: 13px; font-weight: 300;
+  color: var(--ink3); line-height: 1.7;
+}
+
+/* ===================== FOCUS AREAS ===================== */
+.focus {
+  background: var(--navy);
+  padding: 100px 60px;
+  position: relative; overflow: hidden;
+}
+.focus::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(rgba(201,151,58,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,151,58,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.focus-header {
+  position: relative; z-index: 1;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 60px;
+}
+.focus-header .section-label { color: var(--gold); }
+.focus-header .section-title { color: var(--white); margin-bottom: 0; }
+.focus-count {
+  font-family: 'Cormorant', serif;
+  font-size: 80px; font-weight: 700;
+  color: rgba(255,255,255,0.05);
+  line-height: 1;
+}
+.focus-grid {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px;
+  background: rgba(255,255,255,0.06);
+}
+.focus-card {
+  background: var(--navy);
+  padding: 40px 36px;
+  transition: background 0.3s;
+  cursor: default;
+}
+.focus-card:hover { background: var(--navy3); }
+.fc-number {
+  font-family: 'Cormorant', serif;
+  font-size: 11px; font-weight: 600;
+  color: var(--gold); letter-spacing: 0.15em;
+  margin-bottom: 20px; font-style: italic;
+}
+.fc-icon {
+  font-size: 24px; margin-bottom: 16px; display: block;
+}
+.fc-title {
+  font-family: 'Cormorant', serif;
+  font-size: 22px; font-weight: 600;
+  color: var(--white); line-height: 1.2;
+  margin-bottom: 12px;
+}
+.fc-desc {
+  font-size: 13px; font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.75;
+}
+.fc-bar {
+  width: 32px; height: 2px;
+  background: var(--gold);
+  margin-top: 20px;
+  transition: width 0.3s;
+}
+.focus-card:hover .fc-bar { width: 64px; }
+
+/* ===================== PUBLICATIONS ===================== */
+.publications {
+  padding: 100px 60px;
+  background: var(--cream);
+}
+.pub-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 52px;
+}
+.pub-header .section-title { margin-bottom: 0; }
+.pub-link {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+  transition: gap 0.2s;
+}
+.pub-link:hover { gap: 14px; }
+.pub-link::after { content: '→'; }
+
+.pub-empty {
+  border: 1px dashed var(--rule);
+  padding: 80px 40px;
+  text-align: center;
+  background: rgba(255,255,255,0.5);
+}
+.pub-empty-icon {
+  font-size: 32px; margin-bottom: 16px; opacity: 0.4;
+}
+.pub-empty h3 {
+  font-family: 'Cormorant', serif;
+  font-size: 24px; font-weight: 600;
+  color: var(--navy); margin-bottom: 10px;
+}
+.pub-empty p {
+  font-size: 14px; font-weight: 300;
+  color: var(--ink4); max-width: 400px;
+  margin: 0 auto 28px; line-height: 1.7;
+}
+.pub-formats {
+  display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+}
+.pub-format-tag {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px; font-weight: 400;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink3);
+  border: 1px solid var(--rule);
+  padding: 6px 14px;
+  background: var(--cream2);
+}
+
+/* ===================== APPROACH ===================== */
+.approach {
+  padding: 100px 60px;
+  background: var(--cream2);
+  position: relative;
+}
+.approach-inner {
+  max-width: 900px; margin: 0 auto;
+  text-align: center;
+}
+.approach-inner .section-label {
+  justify-content: center;
+}
+.approach-inner .section-label::before { display: none; }
+.approach-inner .section-title { text-align: center; }
+.approach-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0; margin-top: 60px;
+  border: 1px solid var(--rule);
+  background: var(--rule);
+}
+.approach-step {
+  background: var(--cream2);
+  padding: 36px 28px; text-align: left;
+  position: relative;
+}
+.as-num {
+  font-family: 'Cormorant', serif;
+  font-size: 48px; font-weight: 700;
+  color: rgba(15,31,61,0.07);
+  line-height: 1; margin-bottom: 16px;
+}
+.as-title {
+  font-family: 'Jost', sans-serif;
+  font-size: 13px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--navy); margin-bottom: 8px;
+}
+.as-desc {
+  font-size: 12px; font-weight: 300;
+  color: var(--ink3); line-height: 1.7;
+}
+.as-arrow {
+  position: absolute; top: 36px; right: 20px;
+  color: var(--gold); font-size: 18px; opacity: 0.4;
+}
+
+/* ===================== CONTACT ===================== */
+.contact {
+  background: var(--navy);
+  padding: 100px 60px;
+  position: relative; overflow: hidden;
+}
+.contact::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; right: -100px;
+  width: 400px; height: 400px;
+  border: 1px solid rgba(201,151,58,0.08);
+  border-radius: 50%;
+}
+.contact-inner {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.contact-left .section-label { color: var(--gold); }
+.contact-left .section-title { color: var(--white); }
+.contact-left p {
+  font-size: 15px; font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.8; margin-bottom: 36px;
+}
+.contact-right {}
+.contact-items {
+  display: flex; flex-direction: column; gap: 0;
+}
+.contact-item {
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex; gap: 20px; align-items: center;
+}
+.contact-item:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
+.ci-icon {
+  width: 40px; height: 40px;
+  border: 1px solid rgba(201,151,58,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+  color: var(--gold2);
+}
+.ci-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px; font-weight: 400;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); margin-bottom: 3px;
+}
+.ci-value {
+  font-size: 14px; font-weight: 300;
+  color: rgba(255,255,255,0.75);
+}
+.ci-value a {
+  color: inherit; text-decoration: none;
+  transition: color 0.2s;
+}
+.ci-value a:hover { color: var(--gold2); }
+
+/* ===================== FOOTER ===================== */
+footer {
+  background: #08131f;
+  padding: 40px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid rgba(201,151,58,0.15);
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-logo {
+  font-family: 'Cormorant', serif;
+  font-size: 18px; font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+}
+.footer-tagline {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px; font-weight: 300;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+}
+.footer-copy {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px; font-weight: 300;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.05em;
+}
+
+/* ===================== ANIMATIONS ===================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scrollLine {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1; transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ===================== MOBILE ===================== */
+@media (max-width: 768px) {
+  nav { padding: 16px 24px; }
+  nav.scrolled { padding: 12px 24px; }
+  .nav-links { display: none; }
+
+  .hero { padding: 0 24px 120px; min-height: 100svh; }
+  .hero-stats { display: none; }
+  .hero-scroll { display: none; }
+
+  .about { padding: 72px 24px; grid-template-columns: 1fr; gap: 48px; }
+  .focus { padding: 72px 24px; }
+  .focus-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .publications { padding: 72px 24px; }
+  .pub-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .approach { padding: 72px 24px; }
+  .contact { padding: 72px 24px; }
+  .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+  footer { padding: 28px 24px; flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">S<span>pectra</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#focus">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:spectra.irinstitute@gmail.com" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-geo"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-gradient"></div>
+
+  <!-- Large prism background mark -->
+  <div class="hero-prism">
+    <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="150,20 280,260 20,260" stroke="#c9973a" stroke-width="1.5" fill="none"/>
+      <polygon points="150,20 230,200 70,200" stroke="#c9973a" stroke-width="1" fill="none" opacity="0.6"/>
+      <polygon points="150,20 200,160 100,160" stroke="#c9973a" stroke-width="0.8" fill="none" opacity="0.4"/>
+      <line x1="150" y1="20" x2="280" y2="260" stroke="#c9973a" stroke-width="0.5" opacity="0.3"/>
+      <line x1="150" y1="20" x2="20" y2="260" stroke="#c9973a" stroke-width="0.5" opacity="0.3"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Nairobi, Kenya · Est. 2025</div>
+    <h1 class="hero-title">
+      <strong>Spectra</strong>
+      <em>Institute</em>
+    </h1>
+    <p class="hero-subtitle">International Relations & Data Intelligence</p>
+    <p class="hero-mission">
+      "Producing rigorous, data-driven analysis of international systems — making complex geopolitical, trade, and development dynamics legible to decision-makers and the informed public."
+    </p>
+    <div class="hero-actions">
+      <a href="#focus" class="btn-primary">Our Research</a>
+      <a href="#publications" class="btn-secondary">Publications</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hs-num">5</div>
+      <div class="hs-label">Research<br>Focus Areas</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hs-num">AI</div>
+      <div class="hs-label">Powered<br>Analysis</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hs-num">HoA</div>
+      <div class="hs-label">Regional<br>Specialisation</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hs-num">Open</div>
+      <div class="hs-label">Access<br>Research</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-left reveal">
+    <div class="section-label">Who We Are</div>
+    <h2 class="section-title">A new kind of<br><em>policy institution</em></h2>
+    <p class="about-text">Spectra is a lean, AI-powered research institute dedicated to producing evidence-based analysis at the intersection of international relations, data science, and policy. Based in Nairobi, we bring an African perspective to global dynamics.</p>
+    <p class="about-text">We combine the analytical rigour of traditional think tanks with the speed and tools of a digital-first institution — publishing faster, working openly, and making our data available to the public.</p>
+  </div>
+  <div class="about-right reveal reveal-delay-2">
+    <div class="about-values">
+      <div class="value-item">
+        <div class="value-num">i.</div>
+        <div class="value-content">
+          <h4>Analytical Rigour</h4>
+          <p>Every output is evidence-based. Claims are sourced. Methodology is documented and transparent.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">ii.</div>
+        <div class="value-content">
+          <h4>Regional Depth</h4>
+          <p>East and Horn of Africa is our primary geographic lens. Global dynamics anchored in regional specificity.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">iii.</div>
+        <div class="value-content">
+          <h4>Open Knowledge</h4>
+          <p>Research is published publicly. Data is shared where possible. Knowledge should circulate freely.</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-num">iv.</div>
+        <div class="value-content">
+          <h4>AI-Native Practice</h4>
+          <p>AI amplifies our analytical capacity — accelerating research without replacing intellectual integrity.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOCUS AREAS -->
+<section class="focus" id="focus">
+  <div class="focus-header reveal">
+    <div>
+      <div class="section-label" style="color:var(--gold);">What We Study</div>
+      <h2 class="section-title" style="color:var(--white);">Research<br>Focus Areas</h2>
+    </div>
+    <div class="focus-count">05</div>
+  </div>
+  <div class="focus-grid">
+    <div class="focus-card reveal">
+      <div class="fc-number">01 —</div>
+      <span class="fc-icon">🌍</span>
+      <h3 class="fc-title">Geopolitics & Security</h3>
+      <p class="fc-desc">Power shifts, alliance structures, conflict drivers, and great-power competition across the African continent and beyond.</p>
+      <div class="fc-bar"></div>
+    </div>
+    <div class="focus-card reveal reveal-delay-1">
+      <div class="fc-number">02 —</div>
+      <span class="fc-icon">📦</span>
+      <h3 class="fc-title">Trade & Development</h3>
+      <p class="fc-desc">AfCFTA implementation, trade corridor analysis, development finance, debt dynamics, and economic integration.</p>
+      <div class="fc-bar"></div>
+    </div>
+    <div class="focus-card reveal reveal-delay-2">
+      <div class="fc-number">03 —</div>
+      <span class="fc-icon">📊</span>
+      <h3 class="fc-title">Data Intelligence</h3>
+      <p class="fc-desc">Quantitative analysis of international systems. Public datasets, visualisations, and data-driven policy narratives.</p>
+      <div class="fc-bar"></div>
+    </div>
+    <div class="focus-card reveal reveal-delay-3">
+      <div class="fc-number">04 —</div>
+      <span class="fc-icon">🤖</span>
+      <h3 class="fc-title">AI & Tech Governance</h3>
+      <p class="fc-desc">AI governance in emerging markets, data sovereignty, digital infrastructure, and technology policy in Africa.</p>
+      <div class="fc-bar"></div>
+    </div>
+    <div class="focus-card reveal reveal-delay-4">
+      <div class="fc-number">05 —</div>
+      <span class="fc-icon">🗺️</span>
+      <h3 class="fc-title">Horn of Africa Studies</h3>
+      <p class="fc-desc">Deep-focus on Ethiopia, Kenya, Somalia, Sudan, and Eritrea — regional integration, security, and political dynamics.</p>
+      <div class="fc-bar"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section class="publications" id="publications">
+  <div class="pub-header reveal">
+    <div>
+      <div class="section-label">Research Output</div>
+      <h2 class="section-title">Publications</h2>
+    </div>
+    <a href="https://github.com/spectrairinstitute/spectra-research" target="_blank" class="pub-link">Research Archive</a>
+  </div>
+
+  <div class="pub-empty reveal">
+    <div class="pub-empty-icon">📄</div>
+    <h3>First Publication Coming Soon</h3>
+    <p>Spectra's inaugural research output is currently in progress. Subscribe via Substack or follow on LinkedIn to be notified when we publish.</p>
+    <div class="pub-formats">
+      <span class="pub-format-tag">Policy Briefs</span>
+      <span class="pub-format-tag">Data Notes</span>
+      <span class="pub-format-tag">Situation Reports</span>
+      <span class="pub-format-tag">Strategic Forecasts</span>
+      <span class="pub-format-tag">Explainers</span>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach" id="approach">
+  <div class="approach-inner">
+    <div class="reveal">
+      <div class="section-label">How We Work</div>
+      <h2 class="section-title">From <em>signal</em> to <em>insight</em></h2>
+    </div>
+    <div class="approach-steps">
+      <div class="approach-step reveal">
+        <div class="as-num">01</div>
+        <div class="as-title">Signal</div>
+        <p class="as-desc">Monitor events, data releases, and policy developments across our focus areas.</p>
+        <span class="as-arrow">→</span>
+      </div>
+      <div class="approach-step reveal reveal-delay-1">
+        <div class="as-num">02</div>
+        <div class="as-title">Research</div>
+        <p class="as-desc">Gather evidence from open data sources, academic literature, and field intelligence.</p>
+        <span class="as-arrow">→</span>
+      </div>
+      <div class="approach-step reveal reveal-delay-2">
+        <div class="as-num">03</div>
+        <div class="as-title">Analyse</div>
+        <p class="as-desc">Apply quantitative and qualitative methods to produce structured findings.</p>
+        <span class="as-arrow">→</span>
+      </div>
+      <div class="approach-step reveal reveal-delay-3">
+        <div class="as-num">04</div>
+        <div class="as-title">Publish</div>
+        <p class="as-desc">Distribute findings openly across platforms — free to access, free to cite.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-left reveal">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title" style="color:var(--white);">Connect with<br><em style="color:var(--gold2);">Spectra</em></h2>
+      <p>We welcome collaboration with researchers, journalists, policymakers, and institutions who share our commitment to evidence-based analysis of international affairs.</p>
+      <a href="mailto:spectra.irinstitute@gmail.com" class="btn-primary">Send Us a Message</a>
+    </div>
+    <div class="contact-right reveal reveal-delay-2">
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="ci-icon">✉</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-value"><a href="mailto:spectra.irinstitute@gmail.com">spectra.irinstitute@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">in</div>
+          <div>
+            <div class="ci-label">LinkedIn</div>
+            <div class="ci-value"><a href="https://linkedin.com/company/spectra-irinstitute" target="_blank">Spectra Institute</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">⌥</div>
+          <div>
+            <div class="ci-label">Research Archive</div>
+            <div class="ci-value"><a href="https://github.com/spectrairinstitute" target="_blank">github.com/spectrairinstitute</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">◎</div>
+          <div>
+            <div class="ci-label">Location</div>
+            <div class="ci-value">Nairobi, Kenya</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Spectra</div>
+  <div class="footer-tagline">Clarity in a complex world</div>
+  <div class="footer-copy">© 2025 Spectra Institute · Nairobi, Kenya</div>
+</footer>
+
+<script>
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
